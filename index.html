@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Homework 3</title>
+</head>
+<body>
+
+  <label for="subreddit_search">Subreddit:</label>
+  <input type="text" id="subreddit_search" name="subreddit_search">
+  <button onclick="getSubreddits()">Search</button>
+
+  <script type="template/handlebars" id="reddit-responses-template">
+  {{#each redditData}}
+    <div class="child">
+      <p>Score: {{data.score}}</p>
+      <a href="{{data.url}}">{{data.title}}</a>
+      <p>Number of Comments: {{data.num_comments}}</p>
+      {{#if archived}}
+        <p>Archived</p>
+      {{else}}
+        <p>Not Archived</p>
+      {{/if}}
+    </div>
+  {{else}}
+    <p>Nothing found.</p>
+  {{/each}}
+  </script>
+
+  <div id="reddit-responses"></div>
+
+  <script src="jquery-3.1.0.js"></script>
+  <script src="handlebars-v4.0.5.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
